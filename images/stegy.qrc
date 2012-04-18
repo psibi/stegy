@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="images">
+    <file>about.png</file>
+    <file>embed.png</file>
+    <file>extract.png</file>
+  </qresource>
+</RCC>

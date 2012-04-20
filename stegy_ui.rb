@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Fri Apr 20 04:20:30 2012
+** Created: Fri Apr 20 16:56:08 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -9,7 +9,7 @@
 
 require 'korundum4'
 
-class Ui_MainWindow
+class Ui_Stegy
     attr_reader :centralwidget
     attr_reader :layoutWidget
     attr_reader :verticalLayout_6
@@ -20,7 +20,7 @@ class Ui_MainWindow
     attr_reader :groupBox_6
     attr_reader :verticalLayout_7
     attr_reader :label_10
-    attr_reader :pushButton_3
+    attr_reader :embed_pushButton
     attr_reader :horizontalLayout_6
     attr_reader :verticalLayout_4
     attr_reader :groupBox
@@ -30,8 +30,6 @@ class Ui_MainWindow
     attr_reader :pushButton
     attr_reader :label_2
     attr_reader :pushButton_2
-    attr_reader :lineEdit
-    attr_reader :checkBox
     attr_reader :groupBox_3
     attr_reader :horizontalLayout_3
     attr_reader :verticalLayout
@@ -43,7 +41,7 @@ class Ui_MainWindow
     attr_reader :horizontalLayout_2
     attr_reader :gridLayout_2
     attr_reader :label_4
-    attr_reader :comboBox
+    attr_reader :algo_combobox
     attr_reader :label_5
     attr_reader :label_6
     attr_reader :comboBox_2
@@ -53,6 +51,9 @@ class Ui_MainWindow
     attr_reader :verticalLayout_2
     attr_reader :checkBox_4
     attr_reader :checkBox_3
+    attr_reader :tab_3
+    attr_reader :horizontalLayout_7
+    attr_reader :textEdit
     attr_reader :tab_2
     attr_reader :horizontalLayout_5
     attr_reader :groupBox_5
@@ -69,17 +70,14 @@ class Ui_MainWindow
     attr_reader :label_8
     attr_reader :pushButton_5
     attr_reader :horizontalSpacer
-    attr_reader :tab_3
-    attr_reader :horizontalLayout_7
-    attr_reader :textEdit
 
-    def setupUi(mainWindow)
-    if mainWindow.objectName.nil?
-        mainWindow.objectName = "mainWindow"
+    def setupUi(stegy)
+    if stegy.objectName.nil?
+        stegy.objectName = "stegy"
     end
-    mainWindow.enabled = true
-    mainWindow.resize(944, 344)
-    @centralwidget = Qt::Widget.new(mainWindow)
+    stegy.enabled = true
+    stegy.resize(944, 344)
+    @centralwidget = Qt::Widget.new(stegy)
     @centralwidget.objectName = "centralwidget"
     @layoutWidget = Qt::Widget.new(@centralwidget)
     @layoutWidget.objectName = "layoutWidget"
@@ -113,10 +111,10 @@ class Ui_MainWindow
 
     @verticalLayout_7.addWidget(@label_10)
 
-    @pushButton_3 = Qt::PushButton.new(@groupBox_6)
-    @pushButton_3.objectName = "pushButton_3"
+    @embed_pushButton = Qt::PushButton.new(@groupBox_6)
+    @embed_pushButton.objectName = "embed_pushButton"
 
-    @verticalLayout_7.addWidget(@pushButton_3)
+    @verticalLayout_7.addWidget(@embed_pushButton)
 
 
     @horizontalLayout_8.addWidget(@groupBox_6)
@@ -151,16 +149,6 @@ class Ui_MainWindow
 
     @gridLayout.addWidget(@pushButton_2, 1, 2, 1, 1)
 
-    @lineEdit = Qt::LineEdit.new(@groupBox)
-    @lineEdit.objectName = "lineEdit"
-
-    @gridLayout.addWidget(@lineEdit, 2, 0, 1, 1)
-
-    @checkBox = Qt::CheckBox.new(@groupBox)
-    @checkBox.objectName = "checkBox"
-
-    @gridLayout.addWidget(@checkBox, 2, 2, 1, 1)
-
 
     @horizontalLayout_4.addLayout(@gridLayout)
 
@@ -185,6 +173,7 @@ class Ui_MainWindow
 
     @spinBox = Qt::SpinBox.new(@groupBox_3)
     @spinBox.objectName = "spinBox"
+    @spinBox.enabled = false
 
     @verticalLayout.addWidget(@spinBox)
 
@@ -210,10 +199,10 @@ class Ui_MainWindow
 
     @gridLayout_2.addWidget(@label_4, 0, 0, 1, 1)
 
-    @comboBox = Qt::ComboBox.new(@groupBox_2)
-    @comboBox.objectName = "comboBox"
+    @algo_combobox = Qt::ComboBox.new(@groupBox_2)
+    @algo_combobox.objectName = "algo_combobox"
 
-    @gridLayout_2.addWidget(@comboBox, 0, 1, 1, 1)
+    @gridLayout_2.addWidget(@algo_combobox, 0, 1, 1, 1)
 
     @label_5 = Qt::Label.new(@groupBox_2)
     @label_5.objectName = "label_5"
@@ -271,7 +260,22 @@ class Ui_MainWindow
 
     icon = Qt::Icon.new
     icon.addPixmap(Qt::Pixmap.new("images/embed.png"), Qt::Icon::Normal, Qt::Icon::Off)
-    @tabWidget.addTab(@tab, icon, Qt::Application.translate("MainWindow", "Embedding", nil, Qt::Application::UnicodeUTF8))
+    @tabWidget.addTab(@tab, icon, Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
+    @tab_3 = Qt::Widget.new()
+    @tab_3.objectName = "tab_3"
+    @horizontalLayout_7 = Qt::HBoxLayout.new(@tab_3)
+    @horizontalLayout_7.objectName = "horizontalLayout_7"
+    @textEdit = Qt::TextEdit.new(@tab_3)
+    @textEdit.objectName = "textEdit"
+    @textEdit.enabled = true
+    @textEdit.focusPolicy = Qt::NoFocus
+    @textEdit.textInteractionFlags = Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse
+
+    @horizontalLayout_7.addWidget(@textEdit)
+
+    icon1 = Qt::Icon.new
+    icon1.addPixmap(Qt::Pixmap.new("images/about.png"), Qt::Icon::Normal, Qt::Icon::Off)
+    @tabWidget.addTab(@tab_3, icon1, Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
     @tab_2 = Qt::Widget.new()
     @tab_2.objectName = "tab_2"
     @horizontalLayout_5 = Qt::HBoxLayout.new(@tab_2)
@@ -343,95 +347,80 @@ class Ui_MainWindow
 
     @horizontalLayout_5.addWidget(@groupBox_5)
 
-    icon1 = Qt::Icon.new
-    icon1.addPixmap(Qt::Pixmap.new("images/extract.png"), Qt::Icon::Normal, Qt::Icon::Off)
-    @tabWidget.addTab(@tab_2, icon1, Qt::Application.translate("MainWindow", "Extraction", nil, Qt::Application::UnicodeUTF8))
-    @tab_3 = Qt::Widget.new()
-    @tab_3.objectName = "tab_3"
-    @horizontalLayout_7 = Qt::HBoxLayout.new(@tab_3)
-    @horizontalLayout_7.objectName = "horizontalLayout_7"
-    @textEdit = Qt::TextEdit.new(@tab_3)
-    @textEdit.objectName = "textEdit"
-    @textEdit.enabled = true
-    @textEdit.focusPolicy = Qt::NoFocus
-    @textEdit.textInteractionFlags = Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse
-
-    @horizontalLayout_7.addWidget(@textEdit)
-
     icon2 = Qt::Icon.new
-    icon2.addPixmap(Qt::Pixmap.new("images/about.png"), Qt::Icon::Normal, Qt::Icon::Off)
-    @tabWidget.addTab(@tab_3, icon2, Qt::Application.translate("MainWindow", "About", nil, Qt::Application::UnicodeUTF8))
+    icon2.addPixmap(Qt::Pixmap.new("images/extract.png"), Qt::Icon::Normal, Qt::Icon::Off)
+    @tabWidget.addTab(@tab_2, icon2, Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
 
     @horizontalLayout.addWidget(@tabWidget)
 
-    mainWindow.centralWidget = @centralwidget
+    stegy.centralWidget = @centralwidget
 
-    retranslateUi(mainWindow)
+    retranslateUi(stegy)
+    Qt::Object.connect(@checkBox_2, SIGNAL('clicked(bool)'), @spinBox, SLOT('setEnabled(bool)'))
 
     @tabWidget.setCurrentIndex(0)
 
 
-    Qt::MetaObject.connectSlotsByName(mainWindow)
+    Qt::MetaObject.connectSlotsByName(stegy)
     end # setupUi
 
-    def setup_ui(mainWindow)
-        setupUi(mainWindow)
+    def setup_ui(stegy)
+        setupUi(stegy)
     end
 
-    def retranslateUi(mainWindow)
-    mainWindow.windowTitle = Qt::Application.translate("MainWindow", "Stegy", nil, Qt::Application::UnicodeUTF8)
-    @groupBox_6.title = Qt::Application.translate("MainWindow", "Preview", nil, Qt::Application::UnicodeUTF8)
+    def retranslateUi(stegy)
+    stegy.windowTitle = Qt::Application.translate("Stegy", "Stegy", nil, Qt::Application::UnicodeUTF8)
+    @groupBox_6.title = Qt::Application.translate("Stegy", "Preview", nil, Qt::Application::UnicodeUTF8)
     @label_10.text = ''
-    @pushButton_3.text = Qt::Application.translate("MainWindow", "PushButton", nil, Qt::Application::UnicodeUTF8)
-    @groupBox.title = Qt::Application.translate("MainWindow", "Files", nil, Qt::Application::UnicodeUTF8)
-    @label.text = Qt::Application.translate("MainWindow", "Cover File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton.text = Qt::Application.translate("MainWindow", "PushButton", nil, Qt::Application::UnicodeUTF8)
-    @label_2.text = Qt::Application.translate("MainWindow", "Embed File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_2.text = Qt::Application.translate("MainWindow", "PushButton", nil, Qt::Application::UnicodeUTF8)
-    @checkBox.text = Qt::Application.translate("MainWindow", "Use Cover File", nil, Qt::Application::UnicodeUTF8)
-    @groupBox_3.title = Qt::Application.translate("MainWindow", "Compression", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_2.text = Qt::Application.translate("MainWindow", "Use Cover File", nil, Qt::Application::UnicodeUTF8)
-    @label_3.text = Qt::Application.translate("MainWindow", "Compression Level (1-9)", nil, Qt::Application::UnicodeUTF8)
-    @groupBox_2.title = Qt::Application.translate("MainWindow", "Encryption", nil, Qt::Application::UnicodeUTF8)
-    @label_4.text = Qt::Application.translate("MainWindow", "Type", nil, Qt::Application::UnicodeUTF8)
-    @label_5.text = Qt::Application.translate("MainWindow", "Mode", nil, Qt::Application::UnicodeUTF8)
-    @label_6.text = Qt::Application.translate("MainWindow", "Key", nil, Qt::Application::UnicodeUTF8)
-    @groupBox_4.title = Qt::Application.translate("MainWindow", "Other Options", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_4.text = Qt::Application.translate("MainWindow", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_3.text = Qt::Application.translate("MainWindow", "No Original FileName", nil, Qt::Application::UnicodeUTF8)
-    @tabWidget.setTabText(@tabWidget.indexOf(@tab), Qt::Application.translate("MainWindow", "Embedding", nil, Qt::Application::UnicodeUTF8))
-    @groupBox_5.title = Qt::Application.translate("MainWindow", "Files", nil, Qt::Application::UnicodeUTF8)
-    @label_7.text = Qt::Application.translate("MainWindow", "Stego File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_4.text = Qt::Application.translate("MainWindow", "Open", nil, Qt::Application::UnicodeUTF8)
-    @label_9.text = Qt::Application.translate("MainWindow", "Output File", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_5.text = Qt::Application.translate("MainWindow", "Use Original Name", nil, Qt::Application::UnicodeUTF8)
-    @label_8.text = Qt::Application.translate("MainWindow", "Key", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_5.text = Qt::Application.translate("MainWindow", "Extract", nil, Qt::Application::UnicodeUTF8)
-    @tabWidget.setTabText(@tabWidget.indexOf(@tab_2), Qt::Application.translate("MainWindow", "Extraction", nil, Qt::Application::UnicodeUTF8))
-    @textEdit.html = Qt::Application.translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
+    @embed_pushButton.text = Qt::Application.translate("Stegy", "Embed", nil, Qt::Application::UnicodeUTF8)
+    @groupBox.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
+    @label.text = Qt::Application.translate("Stegy", "Cover File", nil, Qt::Application::UnicodeUTF8)
+    @pushButton.text = Qt::Application.translate("Stegy", "Get Cover File", nil, Qt::Application::UnicodeUTF8)
+    @label_2.text = Qt::Application.translate("Stegy", "Embed File", nil, Qt::Application::UnicodeUTF8)
+    @pushButton_2.text = Qt::Application.translate("Stegy", "Get Embed File", nil, Qt::Application::UnicodeUTF8)
+    @groupBox_3.title = Qt::Application.translate("Stegy", "Compression", nil, Qt::Application::UnicodeUTF8)
+    @checkBox_2.text = Qt::Application.translate("Stegy", "Compress", nil, Qt::Application::UnicodeUTF8)
+    @label_3.text = Qt::Application.translate("Stegy", "Compression Level (1-9)", nil, Qt::Application::UnicodeUTF8)
+    @groupBox_2.title = Qt::Application.translate("Stegy", "Encryption", nil, Qt::Application::UnicodeUTF8)
+    @label_4.text = Qt::Application.translate("Stegy", "Type", nil, Qt::Application::UnicodeUTF8)
+    @label_5.text = Qt::Application.translate("Stegy", "Mode", nil, Qt::Application::UnicodeUTF8)
+    @label_6.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
+    @groupBox_4.title = Qt::Application.translate("Stegy", "Other Options", nil, Qt::Application::UnicodeUTF8)
+    @checkBox_4.text = Qt::Application.translate("Stegy", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
+    @checkBox_3.text = Qt::Application.translate("Stegy", "No Original FileName", nil, Qt::Application::UnicodeUTF8)
+    @tabWidget.setTabText(@tabWidget.indexOf(@tab), Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
+    @textEdit.html = Qt::Application.translate("Stegy", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n" \
 "p, li { white-space: pre-wrap; }\n" \
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n" \
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", nil, Qt::Application::UnicodeUTF8)
-    @tabWidget.setTabText(@tabWidget.indexOf(@tab_3), Qt::Application.translate("MainWindow", "About", nil, Qt::Application::UnicodeUTF8))
+    @tabWidget.setTabText(@tabWidget.indexOf(@tab_3), Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
+    @groupBox_5.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
+    @label_7.text = Qt::Application.translate("Stegy", "Stego File", nil, Qt::Application::UnicodeUTF8)
+    @pushButton_4.text = Qt::Application.translate("Stegy", "Open", nil, Qt::Application::UnicodeUTF8)
+    @label_9.text = Qt::Application.translate("Stegy", "Output File", nil, Qt::Application::UnicodeUTF8)
+    @checkBox_5.text = Qt::Application.translate("Stegy", "Use Original Name", nil, Qt::Application::UnicodeUTF8)
+    @label_8.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
+    @pushButton_5.text = Qt::Application.translate("Stegy", "Extract", nil, Qt::Application::UnicodeUTF8)
+    @tabWidget.setTabText(@tabWidget.indexOf(@tab_2), Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
     end # retranslateUi
 
-    def retranslate_ui(mainWindow)
-        retranslateUi(mainWindow)
+    def retranslate_ui(stegy)
+        retranslateUi(stegy)
     end
 
 end
 
 module Ui
-    class MainWindow < Ui_MainWindow
+    class Stegy < Ui_Stegy
     end
 end  # module Ui
 
 if $0 == __FILE__
-    about = KDE::AboutData.new("mainwindow", "MainWindow", KDE.ki18n(""), "0.1")
+    about = KDE::AboutData.new("stegy", "Stegy", KDE.ki18n(""), "0.1")
     KDE::CmdLineArgs.init(ARGV, about)
     a = KDE::Application.new
-    u = Ui_MainWindow.new
+    u = Ui_Stegy.new
     w = Qt::MainWindow.new
     u.setupUi(w)
     a.topWidget = w

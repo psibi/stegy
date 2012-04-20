@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Fri Apr 20 19:19:18 2012
+** Created: Sat Apr 21 04:20:42 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -17,7 +17,7 @@ class Ui_Stegy
     attr_reader :horizontalLayout_8
     attr_reader :groupBox_6
     attr_reader :verticalLayout_7
-    attr_reader :label_10
+    attr_reader :cover_label
     attr_reader :embed_pushButton
     attr_reader :horizontalLayout_6
     attr_reader :verticalLayout_4
@@ -31,9 +31,9 @@ class Ui_Stegy
     attr_reader :groupBox_3
     attr_reader :horizontalLayout_3
     attr_reader :verticalLayout
-    attr_reader :checkBox_2
+    attr_reader :compress_checkBox
     attr_reader :label_3
-    attr_reader :spinBox
+    attr_reader :complevelspinBox
     attr_reader :verticalLayout_5
     attr_reader :groupBox_2
     attr_reader :horizontalLayout_2
@@ -42,12 +42,12 @@ class Ui_Stegy
     attr_reader :algo_comboBox
     attr_reader :label_5
     attr_reader :label_6
-    attr_reader :lineEdit_2
+    attr_reader :pass_lineEdit
     attr_reader :mode_comboBox
     attr_reader :groupBox_4
     attr_reader :verticalLayout_3
     attr_reader :verticalLayout_2
-    attr_reader :checkBox_4
+    attr_reader :nocrc32_checkBox
     attr_reader :checkBox_3
     attr_reader :tab_2
     attr_reader :horizontalLayout_5
@@ -56,15 +56,15 @@ class Ui_Stegy
     attr_reader :gridLayout_5
     attr_reader :label_7
     attr_reader :lineEdit_6
-    attr_reader :pushButton_4
+    attr_reader :stegoFileButton
     attr_reader :label_9
     attr_reader :lineEdit_8
     attr_reader :checkBox_5
     attr_reader :lineEdit_7
-    attr_reader :verticalSpacer
     attr_reader :label_8
     attr_reader :pushButton_5
     attr_reader :horizontalSpacer
+    attr_reader :verticalSpacer
     attr_reader :tab_3
     attr_reader :horizontalLayout_7
     attr_reader :textEdit
@@ -90,18 +90,18 @@ class Ui_Stegy
     @groupBox_6.objectName = "groupBox_6"
     @verticalLayout_7 = Qt::VBoxLayout.new(@groupBox_6)
     @verticalLayout_7.objectName = "verticalLayout_7"
-    @label_10 = Qt::Label.new(@groupBox_6)
-    @label_10.objectName = "label_10"
+    @cover_label = Qt::Label.new(@groupBox_6)
+    @cover_label.objectName = "cover_label"
     @sizePolicy = Qt::SizePolicy.new(Qt::SizePolicy::Fixed, Qt::SizePolicy::Fixed)
     @sizePolicy.setHorizontalStretch(0)
     @sizePolicy.setVerticalStretch(0)
-    @sizePolicy.heightForWidth = @label_10.sizePolicy.hasHeightForWidth
-    @label_10.sizePolicy = @sizePolicy
-    @label_10.maximumSize = Qt::Size.new(205, 205)
-    @label_10.pixmap = Qt::Pixmap.new("../Pictures/chess.png")
-    @label_10.scaledContents = true
+    @sizePolicy.heightForWidth = @cover_label.sizePolicy.hasHeightForWidth
+    @cover_label.sizePolicy = @sizePolicy
+    @cover_label.maximumSize = Qt::Size.new(205, 205)
+    @cover_label.pixmap = Qt::Pixmap.new("images/bg.jpg")
+    @cover_label.scaledContents = true
 
-    @verticalLayout_7.addWidget(@label_10)
+    @verticalLayout_7.addWidget(@cover_label)
 
     @embed_pushButton = Qt::PushButton.new(@groupBox_6)
     @embed_pushButton.objectName = "embed_pushButton"
@@ -153,21 +153,23 @@ class Ui_Stegy
     @horizontalLayout_3.objectName = "horizontalLayout_3"
     @verticalLayout = Qt::VBoxLayout.new()
     @verticalLayout.objectName = "verticalLayout"
-    @checkBox_2 = Qt::CheckBox.new(@groupBox_3)
-    @checkBox_2.objectName = "checkBox_2"
+    @compress_checkBox = Qt::CheckBox.new(@groupBox_3)
+    @compress_checkBox.objectName = "compress_checkBox"
 
-    @verticalLayout.addWidget(@checkBox_2)
+    @verticalLayout.addWidget(@compress_checkBox)
 
     @label_3 = Qt::Label.new(@groupBox_3)
     @label_3.objectName = "label_3"
 
     @verticalLayout.addWidget(@label_3)
 
-    @spinBox = Qt::SpinBox.new(@groupBox_3)
-    @spinBox.objectName = "spinBox"
-    @spinBox.enabled = false
+    @complevelspinBox = Qt::SpinBox.new(@groupBox_3)
+    @complevelspinBox.objectName = "complevelspinBox"
+    @complevelspinBox.enabled = false
+    @complevelspinBox.minimum = 1
+    @complevelspinBox.maximum = 9
 
-    @verticalLayout.addWidget(@spinBox)
+    @verticalLayout.addWidget(@complevelspinBox)
 
 
     @horizontalLayout_3.addLayout(@verticalLayout)
@@ -206,10 +208,10 @@ class Ui_Stegy
 
     @gridLayout_2.addWidget(@label_6, 2, 0, 1, 1)
 
-    @lineEdit_2 = Qt::LineEdit.new(@groupBox_2)
-    @lineEdit_2.objectName = "lineEdit_2"
+    @pass_lineEdit = Qt::LineEdit.new(@groupBox_2)
+    @pass_lineEdit.objectName = "pass_lineEdit"
 
-    @gridLayout_2.addWidget(@lineEdit_2, 2, 1, 1, 1)
+    @gridLayout_2.addWidget(@pass_lineEdit, 2, 1, 1, 1)
 
     @mode_comboBox = Qt::ComboBox.new(@groupBox_2)
     @mode_comboBox.objectName = "mode_comboBox"
@@ -228,10 +230,10 @@ class Ui_Stegy
     @verticalLayout_3.objectName = "verticalLayout_3"
     @verticalLayout_2 = Qt::VBoxLayout.new()
     @verticalLayout_2.objectName = "verticalLayout_2"
-    @checkBox_4 = Qt::CheckBox.new(@groupBox_4)
-    @checkBox_4.objectName = "checkBox_4"
+    @nocrc32_checkBox = Qt::CheckBox.new(@groupBox_4)
+    @nocrc32_checkBox.objectName = "nocrc32_checkBox"
 
-    @verticalLayout_2.addWidget(@checkBox_4)
+    @verticalLayout_2.addWidget(@nocrc32_checkBox)
 
     @checkBox_3 = Qt::CheckBox.new(@groupBox_4)
     @checkBox_3.objectName = "checkBox_3"
@@ -275,10 +277,10 @@ class Ui_Stegy
 
     @gridLayout_5.addWidget(@lineEdit_6, 0, 1, 1, 1)
 
-    @pushButton_4 = Qt::PushButton.new(@groupBox_5)
-    @pushButton_4.objectName = "pushButton_4"
+    @stegoFileButton = Qt::PushButton.new(@groupBox_5)
+    @stegoFileButton.objectName = "stegoFileButton"
 
-    @gridLayout_5.addWidget(@pushButton_4, 0, 2, 1, 1)
+    @gridLayout_5.addWidget(@stegoFileButton, 0, 2, 1, 1)
 
     @label_9 = Qt::Label.new(@groupBox_5)
     @label_9.objectName = "label_9"
@@ -300,10 +302,6 @@ class Ui_Stegy
 
     @gridLayout_5.addWidget(@lineEdit_7, 2, 1, 1, 2)
 
-    @verticalSpacer = Qt::SpacerItem.new(20, 40, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
-
-    @gridLayout_5.addItem(@verticalSpacer, 3, 0, 1, 3)
-
     @label_8 = Qt::Label.new(@groupBox_5)
     @label_8.objectName = "label_8"
 
@@ -317,6 +315,10 @@ class Ui_Stegy
     @horizontalSpacer = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
 
     @gridLayout_5.addItem(@horizontalSpacer, 4, 0, 1, 2)
+
+    @verticalSpacer = Qt::SpacerItem.new(20, 40, Qt::SizePolicy::Minimum, Qt::SizePolicy::Expanding)
+
+    @gridLayout_5.addItem(@verticalSpacer, 3, 0, 1, 3)
 
 
     @horizontalLayout_9.addLayout(@gridLayout_5)
@@ -348,9 +350,12 @@ class Ui_Stegy
     stegy.centralWidget = @centralwidget
 
     retranslateUi(stegy)
-    Qt::Object.connect(@checkBox_2, SIGNAL('clicked(bool)'), @spinBox, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@compress_checkBox, SIGNAL('clicked(bool)'), @complevelspinBox, SLOT('setEnabled(bool)'))
     Qt::Object.connect(@coverFileButton, SIGNAL('clicked()'), stegy, SLOT('getCoverFile()'))
     Qt::Object.connect(@embedFileButton, SIGNAL('clicked()'), stegy, SLOT('getEmbedFile()'))
+    Qt::Object.connect(@algo_comboBox, SIGNAL('currentIndexChanged(QString)'), stegy, SLOT('changeModeEntries()'))
+    Qt::Object.connect(@stegoFileButton, SIGNAL('clicked()'), stegy, SLOT('getStegoFile()'))
+    Qt::Object.connect(@embed_pushButton, SIGNAL('clicked()'), stegy, SLOT('embed()'))
 
     @tabWidget.setCurrentIndex(0)
 
@@ -365,7 +370,7 @@ class Ui_Stegy
     def retranslateUi(stegy)
     stegy.windowTitle = Qt::Application.translate("Stegy", "Stegy", nil, Qt::Application::UnicodeUTF8)
     @groupBox_6.title = Qt::Application.translate("Stegy", "Preview", nil, Qt::Application::UnicodeUTF8)
-    @label_10.text = ''
+    @cover_label.text = ''
     @embed_pushButton.text = Qt::Application.translate("Stegy", "Embed", nil, Qt::Application::UnicodeUTF8)
     @groupBox.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
     @label.text = Qt::Application.translate("Stegy", "Cover File", nil, Qt::Application::UnicodeUTF8)
@@ -373,19 +378,19 @@ class Ui_Stegy
     @label_2.text = Qt::Application.translate("Stegy", "Embed File", nil, Qt::Application::UnicodeUTF8)
     @embedFileButton.text = Qt::Application.translate("Stegy", "Get Embed File", nil, Qt::Application::UnicodeUTF8)
     @groupBox_3.title = Qt::Application.translate("Stegy", "Compression", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_2.text = Qt::Application.translate("Stegy", "Compress", nil, Qt::Application::UnicodeUTF8)
+    @compress_checkBox.text = Qt::Application.translate("Stegy", "Compress", nil, Qt::Application::UnicodeUTF8)
     @label_3.text = Qt::Application.translate("Stegy", "Compression Level (1-9)", nil, Qt::Application::UnicodeUTF8)
     @groupBox_2.title = Qt::Application.translate("Stegy", "Encryption", nil, Qt::Application::UnicodeUTF8)
     @label_4.text = Qt::Application.translate("Stegy", "Type", nil, Qt::Application::UnicodeUTF8)
     @label_5.text = Qt::Application.translate("Stegy", "Mode", nil, Qt::Application::UnicodeUTF8)
     @label_6.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
     @groupBox_4.title = Qt::Application.translate("Stegy", "Other Options", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_4.text = Qt::Application.translate("Stegy", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_3.text = Qt::Application.translate("Stegy", "No Original FileName", nil, Qt::Application::UnicodeUTF8)
+    @nocrc32_checkBox.text = Qt::Application.translate("Stegy", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
+    @checkBox_3.text = Qt::Application.translate("Stegy", "Embed FileName", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab), Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
     @groupBox_5.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
     @label_7.text = Qt::Application.translate("Stegy", "Stego File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_4.text = Qt::Application.translate("Stegy", "Open", nil, Qt::Application::UnicodeUTF8)
+    @stegoFileButton.text = Qt::Application.translate("Stegy", "Open", nil, Qt::Application::UnicodeUTF8)
     @label_9.text = Qt::Application.translate("Stegy", "Output File", nil, Qt::Application::UnicodeUTF8)
     @checkBox_5.text = Qt::Application.translate("Stegy", "Use Original Name", nil, Qt::Application::UnicodeUTF8)
     @label_8.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)

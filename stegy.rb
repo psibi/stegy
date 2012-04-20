@@ -2,7 +2,7 @@ require 'stegy_ui'
 
 class Stegyapp < Qt::MainWindow
 
-  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()'
+  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()','getStegoFile()'
 
   def initialize(parent = nil)
     super(parent)
@@ -18,6 +18,8 @@ class Stegyapp < Qt::MainWindow
 
   def getCoverFile()
     @CoverFile = Qt::FileDialog.getOpenFileName(self,tr("Get Cover File"), ".", tr("Cover Files (*.jpg *.bmp *.mp3 *.au)"))
+    pixmap = Qt::Pixmap.new(@CoverFile)
+    @ui.cover_label.setPixmap(pixmap)
   end
 
   def getEmbedFile()
@@ -35,6 +37,10 @@ class Stegyapp < Qt::MainWindow
         @ui.mode_comboBox.addItem entries
       end
     end
+  end
+
+  def getStegoFile()
+    @StegoFile = Qt::FileDialog.getOpenFileName(self,tr("Get Embed File"),".", tr("Stego Files (*.jpg *.bmp *.mp3 *.au)"))
   end
 
 end

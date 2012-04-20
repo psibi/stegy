@@ -2,7 +2,7 @@ require 'stegy_ui'
 
 class Stegyapp < Qt::MainWindow
 
-  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()','getStegoFile()'
+  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()','getStegoFile()','embed()'
 
   def initialize(parent = nil)
     super(parent)
@@ -18,8 +18,10 @@ class Stegyapp < Qt::MainWindow
 
   def getCoverFile()
     @CoverFile = Qt::FileDialog.getOpenFileName(self,tr("Get Cover File"), ".", tr("Cover Files (*.jpg *.bmp *.mp3 *.au)"))
-    pixmap = Qt::Pixmap.new(@CoverFile)
-    @ui.cover_label.setPixmap(pixmap)
+    if @CoverFile != nil
+      pixmap = Qt::Pixmap.new(@CoverFile)
+      @ui.cover_label.setPixmap(pixmap)
+    end
   end
 
   def getEmbedFile()
@@ -41,6 +43,42 @@ class Stegyapp < Qt::MainWindow
 
   def getStegoFile()
     @StegoFile = Qt::FileDialog.getOpenFileName(self,tr("Get Embed File"),".", tr("Stego Files (*.jpg *.bmp *.mp3 *.au)"))
+  end
+
+  def self.showError(value)
+    Qt::MessageBox.critical nil, "Error", value
+    
+  end 
+
+  def embed()
+    if @CoverFile == nil
+      self.class.showError "No Cover File Found"
+    elsif @EmbedFile == nil
+      self.class.showError "No Embed File Found"
+    elsif @ui.pass_lineEdit == ""
+      self.class.showError "No Passphrase entered"
+    else
+      covFile = ' -cf "' + @CoverFile + '"' #Cover File
+      embedFile = ' -ef "' + @EmbedFile + '"' #Embed File
+      encRypt = " -e " + @ui.algo_comboBox.text + " " + @ui.mode_comboBox.text
+      passFrase = " -p " + @ui.pass_lineEdit.text
+      if @ui.compress_checkBox.isChecked()
+        comPress = " -z " + @ui.complevelspinBox.value
+      else
+        comPress = " -Z"
+      end
+      if @ui.nocrc32_checkBox.isChecked()
+        checkSum = " -K"
+      else
+        checkSum = ""
+      end
+      if @ui.efn_checkBox.isChecked()
+        origName = " -N"
+      else
+        origName = ""
+      end
+      puts covFile + embedFile + encRypt + passFrase + comPress + checkSum + origName
+    end
   end
 
 end

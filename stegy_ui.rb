@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Fri Apr 20 16:56:08 2012
+** Created: Fri Apr 20 19:19:18 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -11,8 +11,6 @@ require 'korundum4'
 
 class Ui_Stegy
     attr_reader :centralwidget
-    attr_reader :layoutWidget
-    attr_reader :verticalLayout_6
     attr_reader :horizontalLayout
     attr_reader :tabWidget
     attr_reader :tab
@@ -27,9 +25,9 @@ class Ui_Stegy
     attr_reader :horizontalLayout_4
     attr_reader :gridLayout
     attr_reader :label
-    attr_reader :pushButton
+    attr_reader :coverFileButton
     attr_reader :label_2
-    attr_reader :pushButton_2
+    attr_reader :embedFileButton
     attr_reader :groupBox_3
     attr_reader :horizontalLayout_3
     attr_reader :verticalLayout
@@ -41,19 +39,16 @@ class Ui_Stegy
     attr_reader :horizontalLayout_2
     attr_reader :gridLayout_2
     attr_reader :label_4
-    attr_reader :algo_combobox
+    attr_reader :algo_comboBox
     attr_reader :label_5
     attr_reader :label_6
-    attr_reader :comboBox_2
     attr_reader :lineEdit_2
+    attr_reader :mode_comboBox
     attr_reader :groupBox_4
     attr_reader :verticalLayout_3
     attr_reader :verticalLayout_2
     attr_reader :checkBox_4
     attr_reader :checkBox_3
-    attr_reader :tab_3
-    attr_reader :horizontalLayout_7
-    attr_reader :textEdit
     attr_reader :tab_2
     attr_reader :horizontalLayout_5
     attr_reader :groupBox_5
@@ -70,6 +65,9 @@ class Ui_Stegy
     attr_reader :label_8
     attr_reader :pushButton_5
     attr_reader :horizontalSpacer
+    attr_reader :tab_3
+    attr_reader :horizontalLayout_7
+    attr_reader :textEdit
 
     def setupUi(stegy)
     if stegy.objectName.nil?
@@ -79,12 +77,6 @@ class Ui_Stegy
     stegy.resize(944, 344)
     @centralwidget = Qt::Widget.new(stegy)
     @centralwidget.objectName = "centralwidget"
-    @layoutWidget = Qt::Widget.new(@centralwidget)
-    @layoutWidget.objectName = "layoutWidget"
-    @layoutWidget.geometry = Qt::Rect.new(0, 0, 100, 30)
-    @verticalLayout_6 = Qt::VBoxLayout.new(@layoutWidget)
-    @verticalLayout_6.objectName = "verticalLayout_6"
-    @verticalLayout_6.setContentsMargins(0, 0, 0, 0)
     @horizontalLayout = Qt::HBoxLayout.new(@centralwidget)
     @horizontalLayout.objectName = "horizontalLayout"
     @tabWidget = Qt::TabWidget.new(@centralwidget)
@@ -134,20 +126,20 @@ class Ui_Stegy
 
     @gridLayout.addWidget(@label, 0, 0, 1, 1)
 
-    @pushButton = Qt::PushButton.new(@groupBox)
-    @pushButton.objectName = "pushButton"
+    @coverFileButton = Qt::PushButton.new(@groupBox)
+    @coverFileButton.objectName = "coverFileButton"
 
-    @gridLayout.addWidget(@pushButton, 0, 2, 1, 1)
+    @gridLayout.addWidget(@coverFileButton, 0, 2, 1, 1)
 
     @label_2 = Qt::Label.new(@groupBox)
     @label_2.objectName = "label_2"
 
     @gridLayout.addWidget(@label_2, 1, 0, 1, 1)
 
-    @pushButton_2 = Qt::PushButton.new(@groupBox)
-    @pushButton_2.objectName = "pushButton_2"
+    @embedFileButton = Qt::PushButton.new(@groupBox)
+    @embedFileButton.objectName = "embedFileButton"
 
-    @gridLayout.addWidget(@pushButton_2, 1, 2, 1, 1)
+    @gridLayout.addWidget(@embedFileButton, 1, 2, 1, 1)
 
 
     @horizontalLayout_4.addLayout(@gridLayout)
@@ -199,10 +191,10 @@ class Ui_Stegy
 
     @gridLayout_2.addWidget(@label_4, 0, 0, 1, 1)
 
-    @algo_combobox = Qt::ComboBox.new(@groupBox_2)
-    @algo_combobox.objectName = "algo_combobox"
+    @algo_comboBox = Qt::ComboBox.new(@groupBox_2)
+    @algo_comboBox.objectName = "algo_comboBox"
 
-    @gridLayout_2.addWidget(@algo_combobox, 0, 1, 1, 1)
+    @gridLayout_2.addWidget(@algo_comboBox, 0, 1, 1, 1)
 
     @label_5 = Qt::Label.new(@groupBox_2)
     @label_5.objectName = "label_5"
@@ -214,15 +206,15 @@ class Ui_Stegy
 
     @gridLayout_2.addWidget(@label_6, 2, 0, 1, 1)
 
-    @comboBox_2 = Qt::ComboBox.new(@groupBox_2)
-    @comboBox_2.objectName = "comboBox_2"
-
-    @gridLayout_2.addWidget(@comboBox_2, 1, 1, 1, 1)
-
     @lineEdit_2 = Qt::LineEdit.new(@groupBox_2)
     @lineEdit_2.objectName = "lineEdit_2"
 
     @gridLayout_2.addWidget(@lineEdit_2, 2, 1, 1, 1)
+
+    @mode_comboBox = Qt::ComboBox.new(@groupBox_2)
+    @mode_comboBox.objectName = "mode_comboBox"
+
+    @gridLayout_2.addWidget(@mode_comboBox, 1, 1, 1, 1)
 
 
     @horizontalLayout_2.addLayout(@gridLayout_2)
@@ -261,21 +253,6 @@ class Ui_Stegy
     icon = Qt::Icon.new
     icon.addPixmap(Qt::Pixmap.new("images/embed.png"), Qt::Icon::Normal, Qt::Icon::Off)
     @tabWidget.addTab(@tab, icon, Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
-    @tab_3 = Qt::Widget.new()
-    @tab_3.objectName = "tab_3"
-    @horizontalLayout_7 = Qt::HBoxLayout.new(@tab_3)
-    @horizontalLayout_7.objectName = "horizontalLayout_7"
-    @textEdit = Qt::TextEdit.new(@tab_3)
-    @textEdit.objectName = "textEdit"
-    @textEdit.enabled = true
-    @textEdit.focusPolicy = Qt::NoFocus
-    @textEdit.textInteractionFlags = Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse
-
-    @horizontalLayout_7.addWidget(@textEdit)
-
-    icon1 = Qt::Icon.new
-    icon1.addPixmap(Qt::Pixmap.new("images/about.png"), Qt::Icon::Normal, Qt::Icon::Off)
-    @tabWidget.addTab(@tab_3, icon1, Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
     @tab_2 = Qt::Widget.new()
     @tab_2.objectName = "tab_2"
     @horizontalLayout_5 = Qt::HBoxLayout.new(@tab_2)
@@ -347,9 +324,24 @@ class Ui_Stegy
 
     @horizontalLayout_5.addWidget(@groupBox_5)
 
+    icon1 = Qt::Icon.new
+    icon1.addPixmap(Qt::Pixmap.new("images/extract.png"), Qt::Icon::Normal, Qt::Icon::Off)
+    @tabWidget.addTab(@tab_2, icon1, Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
+    @tab_3 = Qt::Widget.new()
+    @tab_3.objectName = "tab_3"
+    @horizontalLayout_7 = Qt::HBoxLayout.new(@tab_3)
+    @horizontalLayout_7.objectName = "horizontalLayout_7"
+    @textEdit = Qt::TextEdit.new(@tab_3)
+    @textEdit.objectName = "textEdit"
+    @textEdit.enabled = true
+    @textEdit.focusPolicy = Qt::NoFocus
+    @textEdit.textInteractionFlags = Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse
+
+    @horizontalLayout_7.addWidget(@textEdit)
+
     icon2 = Qt::Icon.new
-    icon2.addPixmap(Qt::Pixmap.new("images/extract.png"), Qt::Icon::Normal, Qt::Icon::Off)
-    @tabWidget.addTab(@tab_2, icon2, Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
+    icon2.addPixmap(Qt::Pixmap.new("images/about.png"), Qt::Icon::Normal, Qt::Icon::Off)
+    @tabWidget.addTab(@tab_3, icon2, Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
 
     @horizontalLayout.addWidget(@tabWidget)
 
@@ -357,6 +349,8 @@ class Ui_Stegy
 
     retranslateUi(stegy)
     Qt::Object.connect(@checkBox_2, SIGNAL('clicked(bool)'), @spinBox, SLOT('setEnabled(bool)'))
+    Qt::Object.connect(@coverFileButton, SIGNAL('clicked()'), stegy, SLOT('getCoverFile()'))
+    Qt::Object.connect(@embedFileButton, SIGNAL('clicked()'), stegy, SLOT('getEmbedFile()'))
 
     @tabWidget.setCurrentIndex(0)
 
@@ -375,9 +369,9 @@ class Ui_Stegy
     @embed_pushButton.text = Qt::Application.translate("Stegy", "Embed", nil, Qt::Application::UnicodeUTF8)
     @groupBox.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
     @label.text = Qt::Application.translate("Stegy", "Cover File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton.text = Qt::Application.translate("Stegy", "Get Cover File", nil, Qt::Application::UnicodeUTF8)
+    @coverFileButton.text = Qt::Application.translate("Stegy", "Get Cover File", nil, Qt::Application::UnicodeUTF8)
     @label_2.text = Qt::Application.translate("Stegy", "Embed File", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_2.text = Qt::Application.translate("Stegy", "Get Embed File", nil, Qt::Application::UnicodeUTF8)
+    @embedFileButton.text = Qt::Application.translate("Stegy", "Get Embed File", nil, Qt::Application::UnicodeUTF8)
     @groupBox_3.title = Qt::Application.translate("Stegy", "Compression", nil, Qt::Application::UnicodeUTF8)
     @checkBox_2.text = Qt::Application.translate("Stegy", "Compress", nil, Qt::Application::UnicodeUTF8)
     @label_3.text = Qt::Application.translate("Stegy", "Compression Level (1-9)", nil, Qt::Application::UnicodeUTF8)
@@ -389,12 +383,6 @@ class Ui_Stegy
     @checkBox_4.text = Qt::Application.translate("Stegy", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
     @checkBox_3.text = Qt::Application.translate("Stegy", "No Original FileName", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab), Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
-    @textEdit.html = Qt::Application.translate("Stegy", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n" \
-"p, li { white-space: pre-wrap; }\n" \
-"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n" \
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", nil, Qt::Application::UnicodeUTF8)
-    @tabWidget.setTabText(@tabWidget.indexOf(@tab_3), Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
     @groupBox_5.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
     @label_7.text = Qt::Application.translate("Stegy", "Stego File", nil, Qt::Application::UnicodeUTF8)
     @pushButton_4.text = Qt::Application.translate("Stegy", "Open", nil, Qt::Application::UnicodeUTF8)
@@ -403,6 +391,12 @@ class Ui_Stegy
     @label_8.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
     @pushButton_5.text = Qt::Application.translate("Stegy", "Extract", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab_2), Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
+    @textEdit.html = Qt::Application.translate("Stegy", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n" \
+"p, li { white-space: pre-wrap; }\n" \
+"</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n" \
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", nil, Qt::Application::UnicodeUTF8)
+    @tabWidget.setTabText(@tabWidget.indexOf(@tab_3), Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
     end # retranslateUi
 
     def retranslate_ui(stegy)

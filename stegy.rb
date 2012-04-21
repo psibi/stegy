@@ -2,7 +2,7 @@ require 'stegy_ui'
 
 class Stegyapp < Qt::MainWindow
 
-  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()','getStegoFile()','embed()'
+  slots 'getCoverFile()','getEmbedFile()','changeModeEntries()','getStegoFile()','embed()','extract()'
 
   def initialize(parent = nil)
     super(parent)
@@ -43,11 +43,13 @@ class Stegyapp < Qt::MainWindow
 
   def getStegoFile()
     @StegoFile = Qt::FileDialog.getOpenFileName(self,tr("Get Embed File"),".", tr("Stego Files (*.jpg *.bmp *.mp3 *.au)"))
+    if @StegoFile != nil
+      @ui.est_lineEdit.setText(@StegoFile)
+    end
   end
 
   def self.showError(value)
     Qt::MessageBox.critical nil, "Error", value
-    
   end 
 
   def embed()
@@ -86,5 +88,30 @@ class Stegyapp < Qt::MainWindow
       end
     end
   end
-  
+
+def extract()
+ if @ui.est_lineEdit.text == ""
+   self.class.showError "No Stego File Loaded"
+ elsif not @ui.uon_checkBox.isChecked and @ui.of_lineEdit.text == ""
+   self.class.showError "Output File Not Written"
+ elsif @ui.key_lineEdit.text == ""
+   self.class.showError "Key not Given"
+ else
+   stegFile = ' -sf ' + @ui.est_lineEdit.text
+   if @ui.uon_checkBox.isChecked
+     outFile = " -f"
+   else
+     outFile = ' -xf "' + @ui.of_lineEdit.text + '"'
+   end 
+   passPhrase = " -p " + @ui.key_lineEdit.text
+   command = "steghide extract" + stegFile + outFile + passPhrase
+   `#{command}` #Execute it
+   if $? == 0
+     Qt::MessageBox.information self, "Success", "Information Extracted Successfully"
+   else
+     self.class.showError "Could not extract any data with that Key!"
+   end
+ end
+end
+ 
 end

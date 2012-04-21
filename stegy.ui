@@ -224,7 +224,7 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QCheckBox" name="checkBox_3">
+                  <widget class="QCheckBox" name="efn_checkBox">
                    <property name="text">
                     <string>Embed FileName</string>
                    </property>

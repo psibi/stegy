@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Sat Apr 21 04:20:42 2012
+** Created: Sat Apr 21 04:36:30 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -48,7 +48,7 @@ class Ui_Stegy
     attr_reader :verticalLayout_3
     attr_reader :verticalLayout_2
     attr_reader :nocrc32_checkBox
-    attr_reader :checkBox_3
+    attr_reader :efn_checkBox
     attr_reader :tab_2
     attr_reader :horizontalLayout_5
     attr_reader :groupBox_5
@@ -235,10 +235,10 @@ class Ui_Stegy
 
     @verticalLayout_2.addWidget(@nocrc32_checkBox)
 
-    @checkBox_3 = Qt::CheckBox.new(@groupBox_4)
-    @checkBox_3.objectName = "checkBox_3"
+    @efn_checkBox = Qt::CheckBox.new(@groupBox_4)
+    @efn_checkBox.objectName = "efn_checkBox"
 
-    @verticalLayout_2.addWidget(@checkBox_3)
+    @verticalLayout_2.addWidget(@efn_checkBox)
 
 
     @verticalLayout_3.addLayout(@verticalLayout_2)
@@ -386,7 +386,7 @@ class Ui_Stegy
     @label_6.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
     @groupBox_4.title = Qt::Application.translate("Stegy", "Other Options", nil, Qt::Application::UnicodeUTF8)
     @nocrc32_checkBox.text = Qt::Application.translate("Stegy", "No CRC32 Checksum", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_3.text = Qt::Application.translate("Stegy", "Embed FileName", nil, Qt::Application::UnicodeUTF8)
+    @efn_checkBox.text = Qt::Application.translate("Stegy", "Embed FileName", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab), Qt::Application.translate("Stegy", "Embedding", nil, Qt::Application::UnicodeUTF8))
     @groupBox_5.title = Qt::Application.translate("Stegy", "Files", nil, Qt::Application::UnicodeUTF8)
     @label_7.text = Qt::Application.translate("Stegy", "Stego File", nil, Qt::Application::UnicodeUTF8)

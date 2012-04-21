@@ -55,15 +55,15 @@ class Stegyapp < Qt::MainWindow
       self.class.showError "No Cover File Found"
     elsif @EmbedFile == nil
       self.class.showError "No Embed File Found"
-    elsif @ui.pass_lineEdit == ""
+    elsif @ui.pass_lineEdit.text == ""
       self.class.showError "No Passphrase entered"
     else
       covFile = ' -cf "' + @CoverFile + '"' #Cover File
       embedFile = ' -ef "' + @EmbedFile + '"' #Embed File
-      encRypt = " -e " + @ui.algo_comboBox.text + " " + @ui.mode_comboBox.text
+      encRypt = " -e " + @ui.algo_comboBox.currentText + " " + @ui.mode_comboBox.currentText
       passFrase = " -p " + @ui.pass_lineEdit.text
       if @ui.compress_checkBox.isChecked()
-        comPress = " -z " + @ui.complevelspinBox.value
+        comPress = " -z " + @ui.complevelspinBox.value.to_s
       else
         comPress = " -Z"
       end
@@ -77,8 +77,14 @@ class Stegyapp < Qt::MainWindow
       else
         origName = ""
       end
-      puts covFile + embedFile + encRypt + passFrase + comPress + checkSum + origName
+      command = "steghide embed" + covFile + embedFile + encRypt + passFrase + comPress + checkSum + origName
+      `#{command}` #Execute it
+      if $? == 0
+        Qt::MessageBox.information self, "Success", "Stego File Created Successfully"
+      else
+        self.class.showError "Error in Creation of Stego File"
+      end
     end
   end
-
+  
 end

@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Sat Apr 21 04:36:30 2012
+** Created: Sat Apr 21 19:37:56 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -55,14 +55,14 @@ class Ui_Stegy
     attr_reader :horizontalLayout_9
     attr_reader :gridLayout_5
     attr_reader :label_7
-    attr_reader :lineEdit_6
+    attr_reader :est_lineEdit
     attr_reader :stegoFileButton
     attr_reader :label_9
-    attr_reader :lineEdit_8
-    attr_reader :checkBox_5
-    attr_reader :lineEdit_7
+    attr_reader :of_lineEdit
+    attr_reader :uon_checkBox
+    attr_reader :key_lineEdit
     attr_reader :label_8
-    attr_reader :pushButton_5
+    attr_reader :extract_pushButton
     attr_reader :horizontalSpacer
     attr_reader :verticalSpacer
     attr_reader :tab_3
@@ -272,10 +272,10 @@ class Ui_Stegy
 
     @gridLayout_5.addWidget(@label_7, 0, 0, 1, 1)
 
-    @lineEdit_6 = Qt::LineEdit.new(@groupBox_5)
-    @lineEdit_6.objectName = "lineEdit_6"
+    @est_lineEdit = Qt::LineEdit.new(@groupBox_5)
+    @est_lineEdit.objectName = "est_lineEdit"
 
-    @gridLayout_5.addWidget(@lineEdit_6, 0, 1, 1, 1)
+    @gridLayout_5.addWidget(@est_lineEdit, 0, 1, 1, 1)
 
     @stegoFileButton = Qt::PushButton.new(@groupBox_5)
     @stegoFileButton.objectName = "stegoFileButton"
@@ -287,30 +287,32 @@ class Ui_Stegy
 
     @gridLayout_5.addWidget(@label_9, 1, 0, 1, 1)
 
-    @lineEdit_8 = Qt::LineEdit.new(@groupBox_5)
-    @lineEdit_8.objectName = "lineEdit_8"
+    @of_lineEdit = Qt::LineEdit.new(@groupBox_5)
+    @of_lineEdit.objectName = "of_lineEdit"
+    @of_lineEdit.enabled = false
 
-    @gridLayout_5.addWidget(@lineEdit_8, 1, 1, 1, 1)
+    @gridLayout_5.addWidget(@of_lineEdit, 1, 1, 1, 1)
 
-    @checkBox_5 = Qt::CheckBox.new(@groupBox_5)
-    @checkBox_5.objectName = "checkBox_5"
+    @uon_checkBox = Qt::CheckBox.new(@groupBox_5)
+    @uon_checkBox.objectName = "uon_checkBox"
+    @uon_checkBox.checked = true
 
-    @gridLayout_5.addWidget(@checkBox_5, 1, 2, 1, 1)
+    @gridLayout_5.addWidget(@uon_checkBox, 1, 2, 1, 1)
 
-    @lineEdit_7 = Qt::LineEdit.new(@groupBox_5)
-    @lineEdit_7.objectName = "lineEdit_7"
+    @key_lineEdit = Qt::LineEdit.new(@groupBox_5)
+    @key_lineEdit.objectName = "key_lineEdit"
 
-    @gridLayout_5.addWidget(@lineEdit_7, 2, 1, 1, 2)
+    @gridLayout_5.addWidget(@key_lineEdit, 2, 1, 1, 2)
 
     @label_8 = Qt::Label.new(@groupBox_5)
     @label_8.objectName = "label_8"
 
     @gridLayout_5.addWidget(@label_8, 2, 0, 1, 1)
 
-    @pushButton_5 = Qt::PushButton.new(@groupBox_5)
-    @pushButton_5.objectName = "pushButton_5"
+    @extract_pushButton = Qt::PushButton.new(@groupBox_5)
+    @extract_pushButton.objectName = "extract_pushButton"
 
-    @gridLayout_5.addWidget(@pushButton_5, 4, 2, 1, 1)
+    @gridLayout_5.addWidget(@extract_pushButton, 4, 2, 1, 1)
 
     @horizontalSpacer = Qt::SpacerItem.new(40, 20, Qt::SizePolicy::Expanding, Qt::SizePolicy::Minimum)
 
@@ -356,8 +358,10 @@ class Ui_Stegy
     Qt::Object.connect(@algo_comboBox, SIGNAL('currentIndexChanged(QString)'), stegy, SLOT('changeModeEntries()'))
     Qt::Object.connect(@stegoFileButton, SIGNAL('clicked()'), stegy, SLOT('getStegoFile()'))
     Qt::Object.connect(@embed_pushButton, SIGNAL('clicked()'), stegy, SLOT('embed()'))
+    Qt::Object.connect(@uon_checkBox, SIGNAL('clicked(bool)'), @of_lineEdit, SLOT('setDisabled(bool)'))
+    Qt::Object.connect(@extract_pushButton, SIGNAL('clicked()'), stegy, SLOT('extract()'))
 
-    @tabWidget.setCurrentIndex(0)
+    @tabWidget.setCurrentIndex(2)
 
 
     Qt::MetaObject.connectSlotsByName(stegy)
@@ -392,15 +396,17 @@ class Ui_Stegy
     @label_7.text = Qt::Application.translate("Stegy", "Stego File", nil, Qt::Application::UnicodeUTF8)
     @stegoFileButton.text = Qt::Application.translate("Stegy", "Open", nil, Qt::Application::UnicodeUTF8)
     @label_9.text = Qt::Application.translate("Stegy", "Output File", nil, Qt::Application::UnicodeUTF8)
-    @checkBox_5.text = Qt::Application.translate("Stegy", "Use Original Name", nil, Qt::Application::UnicodeUTF8)
+    @uon_checkBox.text = Qt::Application.translate("Stegy", "Use Original Name", nil, Qt::Application::UnicodeUTF8)
     @label_8.text = Qt::Application.translate("Stegy", "Key", nil, Qt::Application::UnicodeUTF8)
-    @pushButton_5.text = Qt::Application.translate("Stegy", "Extract", nil, Qt::Application::UnicodeUTF8)
+    @extract_pushButton.text = Qt::Application.translate("Stegy", "Extract", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab_2), Qt::Application.translate("Stegy", "Extraction", nil, Qt::Application::UnicodeUTF8))
     @textEdit.html = Qt::Application.translate("Stegy", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n" \
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n" \
 "p, li { white-space: pre-wrap; }\n" \
 "</style></head><body style=\" font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;\">\n" \
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"></p></body></html>", nil, Qt::Application::UnicodeUTF8)
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-weight:600;\">Stegy </span></p>\n" \
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This application is a frontend to the command line tool steghide. This application is written using pure Ruby using Qt Framework. </p>\n" \
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Programming: Sibi</p></body></html>", nil, Qt::Application::UnicodeUTF8)
     @tabWidget.setTabText(@tabWidget.indexOf(@tab_3), Qt::Application.translate("Stegy", "About", nil, Qt::Application::UnicodeUTF8))
     end # retranslateUi
 

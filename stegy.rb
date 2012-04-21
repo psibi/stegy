@@ -17,10 +17,15 @@ class Stegyapp < Qt::MainWindow
   end
 
   def getCoverFile()
-    @CoverFile = Qt::FileDialog.getOpenFileName(self,tr("Get Cover File"), ".", tr("Cover Files (*.jpg *.bmp *.mp3 *.au)"))
+    @CoverFile = Qt::FileDialog.getOpenFileName(self,tr("Get Cover File"), ".", tr("Cover Files (*.jpg *.bmp *.wav *.au)"))
     if @CoverFile != nil
-      pixmap = Qt::Pixmap.new(@CoverFile)
-      @ui.cover_label.setPixmap(pixmap)
+      if /wav$/.match(@CoverFile) or /au$/.match(@CoverFile)
+        pixmap = Qt::Pixmap.new("./images/audio.png")
+        @ui.cover_label.setPixmap(pixmap)
+      else
+        pixmap = Qt::Pixmap.new(@CoverFile)
+        @ui.cover_label.setPixmap(pixmap)
+      end
     end
   end
 
@@ -42,7 +47,7 @@ class Stegyapp < Qt::MainWindow
   end
 
   def getStegoFile()
-    @StegoFile = Qt::FileDialog.getOpenFileName(self,tr("Get Embed File"),".", tr("Stego Files (*.jpg *.bmp *.mp3 *.au)"))
+    @StegoFile = Qt::FileDialog.getOpenFileName(self,tr("Get Embed File"),".", tr("Stego Files (*.jpg *.bmp *.wav *.au)"))
     if @StegoFile != nil
       @ui.est_lineEdit.setText(@StegoFile)
     end

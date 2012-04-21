@@ -1,7 +1,7 @@
 =begin
 ** Form generated from reading ui file 'stegy.ui'
 **
-** Created: Sat Apr 21 19:37:56 2012
+** Created: Sun Apr 22 01:36:43 2012
 **      by: Qt User Interface Compiler version 4.7.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling ui file!
@@ -361,7 +361,7 @@ class Ui_Stegy
     Qt::Object.connect(@uon_checkBox, SIGNAL('clicked(bool)'), @of_lineEdit, SLOT('setDisabled(bool)'))
     Qt::Object.connect(@extract_pushButton, SIGNAL('clicked()'), stegy, SLOT('extract()'))
 
-    @tabWidget.setCurrentIndex(2)
+    @tabWidget.setCurrentIndex(0)
 
 
     Qt::MetaObject.connectSlotsByName(stegy)
